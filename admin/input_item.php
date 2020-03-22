@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inpu item</title>
+    <title>Input item</title>
     <!-- UNTUK MEMBUAT FONTAWESOME -->
     <script src="https://kit.fontawesome.com/ec4eb7f29b.js" crossorigin="anonymous"></script>
     <!-- INPUT BOOTSTRAP -->
@@ -15,7 +15,7 @@
 <body>
     <nav class="navbar bg-info">
         <!-- NAVBAR BRAND -->
-        <a href="#" class="navbar-brand text-white">
+        <a href="input_item.php" class="navbar-brand text-white">
             <img src="../assets/image/logo-white.png" width="30px" alt="">
             Marketplace Alfa
         </a>
@@ -23,13 +23,13 @@
         <!-- NAVIGASI -->
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link text-white" href="input_item.html">Item</a>
+                <a class="nav-link text-white" href="input_item.php">Item</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="order_masuk.html">Order masuk</a>
+                <a class="nav-link text-white" href="order_masuk.php">Order masuk</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-danger" href="login.php">Logout</a>
+                <a class="nav-link btn btn-danger" href="logout_action.php">Logout</a>
             </li>
         </ul>
     </nav>
@@ -59,14 +59,16 @@
                 <div class="col-md-3">
                     <div class="card">
                         <!-- PREVIEW GAMBAR -->
-                        <img src="<?php echo $d['foto'] ?>" class="card-img-top" alt=Card image cap">
+                        <img src="<?php echo $d['foto']; ?>" class="card-img-top" alt="Card">
                         <!-- DESKRIPSI CARD -->
                         <div class="card-body">
-                            <h5 class="card-title"><?php echo $d['nama'] ?></h5>
-                            <p class="card-text">Harga : <?php echo $d['harga'] ?></p>
-                            <p class="card-text">Stock : <?php echo $d['stock'] ?> pcs</p>
+                            <h5 class="card-title"><?php echo $d['nama']; ?></h5>
+                            <p class="card-text">Harga : <?php echo $d['harga']; ?></p>
+                            <p class="card-text">Stock : <?php echo $d['stock']; ?> pcs</p>
                             <br>
-                            <p class="card-text"><?php echo $d['deskripsi'] ?></p>
+                            <p class="card-text">
+                                <?php echo $d['deskripsi']; ?>
+                            </p>
                             <a href="update_item.php?id=<?php echo $d['id']; ?>" class="btn btn-info"><i class="far fa-edit"></i></a>
                             <a href="delete_item_action.php?id=<?php echo $d['id']; ?>" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
                         </div>

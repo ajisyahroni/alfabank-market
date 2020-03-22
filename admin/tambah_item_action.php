@@ -34,5 +34,5 @@ if ($_SESSION['role'] == 'admin') {
 
    
 } else {
-    header("location:login.php?pesan=gagal");
+    header("location:login.php?pesan=auth");
 }

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inpu item</title>
+    <title>Tambah Item</title>
     <!-- UNTUK MEMBUAT FONTAWESOME -->
     <script src="https://kit.fontawesome.com/ec4eb7f29b.js" crossorigin="anonymous"></script>
     <!-- INPUT BOOTSTRAP -->
@@ -22,9 +22,9 @@
 </head>
 
 <body>
-    <nav class="navbar bg-info">
+<nav class="navbar bg-info">
         <!-- NAVBAR BRAND -->
-        <a href="#" class="navbar-brand text-white">
+        <a href="input_item.php" class="navbar-brand text-white">
             <img src="../assets/image/logo-white.png" width="30px" alt="">
             Marketplace Alfa
         </a>
@@ -32,13 +32,13 @@
         <!-- NAVIGASI -->
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link text-white" href="input_item.html">Item</a>
+                <a class="nav-link text-white" href="input_item.php">Item</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="order_masuk.html">Order masuk</a>
+                <a class="nav-link text-white" href="order_masuk.php">Order masuk</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-danger" href="login.html">Logout</a>
+                <a class="nav-link btn btn-danger" href="logout_action.php">Logout</a>
             </li>
         </ul>
     </nav>

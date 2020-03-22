@@ -22,10 +22,7 @@
     <?php
     include "../koneksi.php";
     $id = $_GET['id'];
-    $query_select = "SELECT * FROM item WHERE id = $id";
 
-    $result = mysqli_query($koneksi, $query_select);
-    $data = mysqli_fetch_object($result);
 
 
 
@@ -33,73 +30,87 @@
 </head>
 
 <body>
-    <nav class="navbar bg-info">
-        <!-- NAVBAR BRAND -->
-        <a href="#" class="navbar-brand text-white">
-            <img src="../assets/image/logo-white.png" width="30px" alt="">
-            Marketplace Alfa
-        </a>
+    <?php
+    if (isset($id)) {
+        $query_select = "SELECT * FROM item WHERE id = $id";
+        $result = mysqli_query($koneksi, $query_select);
+        $data = mysqli_fetch_object($result);
 
-        <!-- NAVIGASI -->
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link text-white" href="input_item.html">Item</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-white" href="order_masuk.html">Order masuk</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link btn btn-danger" href="login.html">Logout</a>
-            </li>
-        </ul>
-    </nav>
 
-    <!-- kontent form -->
-    <div class="container">
-        <p class="mt-5">Halaman input item</p>
-        <form action="update_item_action.php" method="post" enctype="multipart/form-data" class="card p-3 mb-5">
-            <input value="<?php echo $data->nama; ?>" class="form-control form-control-lg" type="text" placeholder="nama produk" name="nama">
-            <div class="form-group mt-3">
-                <label for="exampleFormControlFile1">Upload Gambar</label>
-                <br>
-                <img id="preview" src="<?php echo $data->foto; ?>" alt="" class="img-thumbnail">
-                <input type="file" class="form-control-file" id="fotoUploader" name="foto_item">
+    ?>
+        <nav class="navbar bg-info">
+            <!-- NAVBAR BRAND -->
+            <a href="input_input.php" class="navbar-brand text-white">
+                <img src="../assets/image/logo-white.png" width="30px" alt="">
+                Marketplace Alfa
+            </a>
 
-                <script>
-                    // mengambil element html dengan id
-                    var foto = document.getElementById("fotoUploader")
-                    var preview = document.getElementById("preview")
+            <!-- NAVIGASI -->
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="input_item.php">Item</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="order_masuk.php">Order masuk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn btn-danger" href="logout_action.php">Logout</a>
+                </li>
+            </ul>
+        </nav>
 
-                    // membuat event onchange
-                    foto.onchange = function(evt) {
+        <!-- kontent form -->
+        <div class="container">
+            <p class="mt-5">Halaman input item</p>
+            <form action="update_item_action.php" method="post" enctype="multipart/form-data" class="card p-3 mb-5">
+                <input value="<?php echo $data->nama; ?>" class="form-control form-control-lg" type="text" placeholder="nama produk" name="nama">
+                <div class="form-group mt-3">
+                    <label for="exampleFormControlFile1">Upload Gambar</label>
+                    <br>
+                    <img id="preview" src="<?php echo $data->foto; ?>" alt="" class="img-thumbnail">
+                    <input type="file" class="form-control-file" id="fotoUploader" name="foto_item">
 
-                        var reader = new FileReader()
-                        var file = evt.target.files[0]
+                    <script>
+                        // mengambil element html dengan id
+                        var foto = document.getElementById("fotoUploader")
+                        var preview = document.getElementById("preview")
 
-                        reader.onload = function() {
-                            preview.src = reader.result
+                        // membuat event onchange
+                        foto.onchange = function(evt) {
+
+                            var reader = new FileReader()
+                            var file = evt.target.files[0]
+
+                            reader.onload = function() {
+                                preview.src = reader.result
+                            }
+
+                            reader.readAsDataURL(file)
                         }
-
-                        reader.readAsDataURL(file)
-                    }
-                </script>
+                    </script>
 
 
-            </div>
-            <input value="<?php echo $data->harga; ?>" class="form-control" type="number" placeholder="harga" name="harga">
-            <input value="<?php echo $data->stock; ?>" class="form-control" type="number" placeholder="stock" name="stock">
-            <input type="hidden" name="id" value="<?php echo $data->id; ?>">
-            <textarea class="form-control" id="" cols="30" rows="10" placeholder="deskripsi produk" name="deskripsi">
+                </div>
+                <input value="<?php echo $data->harga; ?>" class="form-control" type="number" placeholder="harga" name="harga">
+                <input value="<?php echo $data->stock; ?>" class="form-control" type="number" placeholder="stock" name="stock">
+                <input type="hidden" name="id" value="<?php echo $data->id; ?>">
+                <textarea class="form-control" id="" cols="30" rows="10" placeholder="deskripsi produk" name="deskripsi">
             <?php echo $data->deskripsi; ?>
             </textarea>
-            <input type="submit" class="btn btn-success" value="update">
-        </form>
-    </div>
+                <input type="submit" class="btn btn-success" value="update">
+            </form>
+        </div>
 
-    <!-- footerr -->
-    <div class="footer bg-info">
-        <p class="text-center text-white"> &copy;Alfabank 2020</p>
-    </div>
+        <!-- footerr -->
+        <div class="footer bg-info">
+            <p class="text-center text-white"> &copy;Alfabank 2020</p>
+        </div>
+    <?php
+    }
+    else{
+        echo "<h1>Ups</h1>";
+    }
+    ?>
 </body>
 
 </html>

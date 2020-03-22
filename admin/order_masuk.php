@@ -10,9 +10,9 @@
 </head>
 <body>
     <!-- header -->
-    <nav class="navbar bg-info navbar-dark">
+    <nav class="navbar bg-info">
         <!-- NAVBAR BRAND -->
-        <a href="#" class="navbar-brand">
+        <a href="input_item.php" class="navbar-brand text-white">
             <img src="../assets/image/logo-white.png" width="30px" alt="">
             Marketplace Alfa
         </a>
@@ -20,17 +20,16 @@
         <!-- NAVIGASI -->
         <ul class="nav">
             <li class="nav-item">
-                <a class="nav-link text-white" href="input_item.html">Item</a>
+                <a class="nav-link text-white" href="input_item.php">Item</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-white" href="order_masuk.html">Order masuk</a>
+                <a class="nav-link text-white" href="order_masuk.php">Order masuk</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn btn-danger" href="login.html">Logout</a>
+                <a class="nav-link btn btn-danger" href="logout_action.php">Logout</a>
             </li>
         </ul>
     </nav>
-
     <div class="container">
         <p class="mt-5">Halaman order masuk</p>
         <div class="card">
