@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order masuk</title>
+    <script src="https://kit.fontawesome.com/ec4eb7f29b.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .border_bottom {
+            border-bottom: 1px solid gray;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- header -->
+    <nav class="navbar bg-info navbar-dark">
+        <!-- NAVBAR BRAND -->
+        <a href="#" class="navbar-brand">
+            <img src="../assets/image/logo-white.png" width="30px" alt="">
+            Marketplace Alfa
+        </a>
+
+        <!-- NAVIGASI -->
+        <ul class="nav">
+            <li class="nav-item">
+                <a class="nav-link text-white" href="dashboard.html">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="order_saya.html">Order Saya <span id="orderBadge" class="badge badge-danger">0</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="about_us.html">About Us</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link btn btn-danger" href="login_customer.html">Logout</a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- kontent form -->
+    <div class="container mb-5 mt-5">
+        <p>halaman detail produk & order</p>
+        <div id="data"></div>
+        <script>
+
+            var local = localStorage.getItem("jumlahOrder")
+            var orderBadge = document.getElementById("orderBadge")
+
+            if (local) {
+                orderBadge.innerHTML = local
+            }
+
+
+            var local = localStorage.getItem("order")
+            var dataOrder = JSON.parse(local)
+
+            var stringHTML = ""
+
+            Array.from(dataOrder).forEach(function (item) {
+                stringHTML += `<div class="row border_bottom mt-5">
+            <div class="col-md-4">
+                <img class="img-thumbnail" src="${item.foto}" alt="">
+            </div>
+            <div class="col-md-8">
+                <h3>Tanggal ${item.tanggal}</h3>
+                <div class="alert alert-warning" role="alert">
+                    Pesanan menunggu di proses penjual
+                </div>
+                <hr>
+                <p>Nama : ${item.nama}</p>
+                <p>Harga : ${item.harga}</p>
+                <p>Jumlah :${item.jumlah}</p>
+                <hr>
+                <p class="mb-5">Total : Rp. ${Number(item.harga) * Number(item.jumlah)},-</p>
+            </div>
+            </div>`
+
+            })
+
+            document.getElementById("data").innerHTML = stringHTML
+        </script>
+
+
+
+
+    </div>
+
+    <!-- footerr -->
+    <div class="footer bg-info">
+        <p class="text-center text-white"> &copy;Alfabank 2020</p>
+    </div>
+</body>
+
+</html>
